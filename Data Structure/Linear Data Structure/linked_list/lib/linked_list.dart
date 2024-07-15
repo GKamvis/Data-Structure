@@ -1,6 +1,6 @@
 class Node<T> {
-  // T generuc tipdir, yəni kod müyəyən bir tipə bağlı olmadan istifadə edə bilirik.
-// Bu T placeholder kimi f'aliyyət göstərir.
+  // T generic tipdir, yəni kod müyəyən bir tipə bağlı olmadan istifadə edə bilirik.
+// Bu T placeholder kimi fəaliyyət göstərir.
 // Node<int> intNode = Node<int>(10);
 // Node<String> stringNode = Node<String>("Hello");
 
