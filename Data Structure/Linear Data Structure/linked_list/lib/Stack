@@ -1,0 +1,71 @@
+/*
+Stack üst-üstə yığılmış yığın kimi işləyir. Yəni LIFO məntiqi ilə işləyir .İLk girən sonuncu olur: Sonuncu girən birinci.
+Aşağıda Gerneric type istifadə etməklə List-dən istifadə edib Stackı yenidən yaratdıq.
+Stackda
+
+ pop - axrıncı elementi silib onu geri qaytarır.
+ push - stacka dəyər daxil edir
+ top - sadəcə sonuncu dəfə stacka əlavə olunmuş dəyəri geri qaytarır.
+ size - stackın ölçüsünü qaytarır.
+ isEmpty - stackın boş olmasını yoxlayır.
+
+Koddakı əsas məqəm - @override  String toString() => _stack.toString() 
+Əgər bu method override edilməsə nəticə belə olar   - Instance of 'Stack<int>'
+
+Daha anlaşıqlı olması baxımından Override etməsək default olaraq method obyektin tipini qaytaracaq.
+Amma biz toString() methodunu override etdikdə Stack obyektinin print methodundan istifadə _stack Listinin içindəkiləri göstərilməsini təmin edirik.
+
+*/
+
+class Stack<T> {
+  List<T> _stack = [];
+
+  void push(T element) {
+    _stack.add(element);
+  }
+
+  T pop() {
+    if (_stack.isEmpty) {
+      throw StateError("Bu stack buşdur");
+    } else {
+      T last = _stack.last;
+      _stack.removeLast();
+      return last;
+    }
+  }
+
+  T top() {
+    if (_stack.isEmpty) {
+      throw StateError("Bu stack boşdur");
+    } else {
+      return _stack.last;
+    }
+  }
+
+  int size() {
+    return _stack.length;
+  }
+
+  bool isEmpty() {
+    return _stack.isEmpty;
+  }
+
+  @override
+  String toString() => _stack.toString();
+}
+
+void main() {
+  var stack = Stack<int>();
+  var test = stack.isEmpty();
+  print(test); // Output: true
+  stack.push(1);
+  stack.push(2);
+  stack.push(3);
+  stack.push(4);
+  stack.push(5);
+  stack.push(7);
+  stack.pop();
+  print(stack.size());
+  print(stack);
+  print(stack.top() * 2);
+}
