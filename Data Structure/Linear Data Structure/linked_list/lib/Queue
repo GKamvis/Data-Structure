@@ -1,0 +1,64 @@
+/*
+Dart dilində dart:collection sinifindən istifadə edərək Queue yaratmaq olar.
+  Queue<String> queue = new Queue<String>(); 
+  Sonrada dartda tanimlanmış addFirst() , addLast(), removeFirst() , removeLast() kimi methodlardan istifadə edərək "Sıra" yaradıla bilər.
+Aşağıda öz Queue sinifimiz yaradib istdəyimiz funsiyalari əlavə edə bilərik. 
+
+Yenədə generic type istifadə etdik Ona görədə   queue obyektini toString methodu ilə override etmək şərtdir əks halda obyektin instance tipi qayıdacaq.
+Instance of 'Queue<dynamic>'
+
+
+Queue Əməliyyatlları
+1)Enqueue sıraya elemetləri daxil edir.
+2)Dequeue sonuncu elemeti silir.
+3)isNull - boş olmasını yoxlayır.
+4)isFull - dolu olmasını yoxlayır.
+
+-əlavə funksiyalar istəlinən kimi əlavə etmək olar ən ortadakı ən böyük ən kiçik ən çox təkrarlanan və s
+
+
+*/
+
+class Queue<T> {
+  final List<T> queue = [];
+
+  int get size => queue.length ?? 0;
+
+  void Enqueue(T element) {
+    queue.add(element);
+    if (queue.isEmpty) return;
+
+    for (int i = size - 1; i - 1 >= 0; i--) {
+      queue[i] = queue[i - 1] ?? element;
+    }
+    queue[0] = element;
+  }
+
+  void Dequeue() {
+    if (queue.isEmpty) throw StateError("  Queue boşdur ");
+    queue.removeLast();
+  }
+
+  bool isNull() {
+    return queue.isEmpty;
+  }
+
+  bool isFull() {
+    return queue.isNotEmpty;
+  }
+
+  @override
+  String toString() => queue.toString();
+}
+
+void main() {
+  Queue q = Queue();
+  q.Enqueue(10);
+  q.Enqueue(30);
+  q.Enqueue(60);
+  print(q); //[60, 30, 10]
+  q.Dequeue();
+  print(q); //[60, 30]
+  print(q.isFull()); //true
+  print(q.isNull()); //false
+}
