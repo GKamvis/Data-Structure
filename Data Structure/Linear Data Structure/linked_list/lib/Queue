@@ -5,6 +5,7 @@ Dart dilində dart:collection sinifindən istifadə edərək Queue yaratmaq olar
 Aşağıda öz Queue sinifimiz yaradib istdəyimiz funsiyalari əlavə edə bilərik. 
 
 Yenədə generic type istifadə etdik Ona görədə   queue obyektini toString methodu ilə override etmək şərtdir əks halda obyektin instance tipi qayıdacaq.
+
 Instance of 'Queue<dynamic>'
 
 
@@ -43,7 +44,7 @@ class Queue<T> {
     return queue.isEmpty;
   }
 
-  bool isFull() {
+  bool isFull(){
     return queue.isNotEmpty;
   }
 
